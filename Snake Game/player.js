@@ -1,12 +1,15 @@
 class player {
 
     activeKey = 0;
-    constructor(name) {
+	controlKeys = {up : 115,down : 119,left : 97,right : 100};
+	
+    constructor(name,control) {
         this.points = 0;
         this.segments = 0;
         this.speed = 0;
         this.name = name;
-
+		this.controlKeys = control;
+	console.log(this.controlKeys.left + "to")
     }
 
     updateStats = (points, speed, health) => {
@@ -26,18 +29,18 @@ class player {
 
     control = (pressedKey) => {
 
-        if (pressedKey == 97 && this.activeKey != 100) {
+        if (pressedKey == this.controlKeys.left ) {
             this.snake.setDirection("Left")
         }
-        if (pressedKey == 119 && this.activeKey != 115) {
+        if (pressedKey == this.controlKeys.down ) {
             this.snake.setDirection("Backwards")
 
         }
-        if (pressedKey == 100 && this.activeKey != 97) {
+        if (pressedKey == this.controlKeys.right ) {
             this.snake.setDirection("Right")
 
         }
-        if (pressedKey == 115 && this.activeKey != 119) {
+        if (pressedKey == this.controlKeys.up ) {
             this.snake.setDirection("Forward")
         }
         this.activeKey = pressedKey

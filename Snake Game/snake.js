@@ -1,6 +1,6 @@
 "use strict"
 class gameSnake extends gameObjects {
-    numberSegments = 5;
+    numberSegments = 1000;
     pieceSegments = [];
 
     direction = {
@@ -80,7 +80,7 @@ class gameSnake extends gameObjects {
         //auto snake collision
 
         for (let i = 0; i < this.positions.length; i++) {
-            if ((this.pieceSegments[i].x == this.position.x && this.pieceSegments[i].y == this.position.y) && i != 0) {
+            if ((this.pieceSegments[i].x == this.position.x && this.pieceSegments[i].y == this.position.y) && i > 1) {
                 //endGame
                 console.log("end game")
                 this.gameConsole.endGame();

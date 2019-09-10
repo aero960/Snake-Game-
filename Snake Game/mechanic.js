@@ -10,10 +10,8 @@ class mechanic {
     collisionMap = [];
 
     allItems = [
-        new gameFruit("Green apple of great life", "green", 1, 10, 1, 1, 5, gameObjects.typeOfObject.item),
-        new gameFruit("Green apple of great life", "orange", 1, 10, 1, 1, 5, gameObjects.typeOfObject.item),
-        new gameFruit("Green apple of great life", "pink", 1, 10, 1, 1, 5, gameObjects.typeOfObject.item),
-        new gameFruit("Green apple of great life", "purple", 1, 10, 1, 1, 5, gameObjects.typeOfObject.item),
+      //  new gameFruit("Green apple of great life", "green", 0.01, 10, 1, 1, 5, gameObjects.typeOfObject.item),
+    
     ]
 
     play = true;
@@ -77,9 +75,13 @@ class mechanic {
     }
 
     addPlayer = () => {
-        let newPlayer = new player("hejka")
-        newPlayer.assignSnake(new gameSnake("rufus", "orange", this.interfaceGameRef, newPlayer, this.consoleGameRef));
-        this.players.push(newPlayer)
+        let Player1 = new player("player1",{up : 115,down : 119,left : 97,right : 100})
+        Player1.assignSnake(new gameSnake("rufus", "orange", this.interfaceGameRef, Player1, this.consoleGameRef));
+		
+		//let Player2 = new player("player2",{up : 107,down : 105,left : 106,right : 108})
+        //Player2.assignSnake(new gameSnake("rufus", "red", this.interfaceGameRef, Player2, this.consoleGameRef));
+        this.players.push(Player1)
+		// this.players.push(Player2)
     }
 
     showGameInterface = () => {
@@ -102,6 +104,7 @@ class mechanic {
     //nothing interesing
 
     controler = () => window.addEventListener("keypress", ((e) => {
+	console.log(e.keyCode);
         this.players.forEach((element, index) => {
             this.players[index].control(e.keyCode);
         })
